@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { ConsultationCapteurComponent } from './consultation-capteur/consultation-capteur.component';
 import { PageAcceuilComponent } from './page-acceuil/page-acceuil.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PageAcceuilComponent } from './page-acceuil/page-acceuil.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

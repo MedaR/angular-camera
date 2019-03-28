@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { FormulaireCapteurComponent } from '/Users/relesse/Documents/angular-camera/src/app/formulaire-capteur/formulaire-capteur.component';
 import * as L from 'leaflet';
 import * as ELG from 'esri-leaflet-geocoder';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
 
@@ -20,23 +21,11 @@ export class ConsultationCapteurComponent implements OnInit {
   information: Capteur;
   myfrugalmap: any;
   voir: boolean;
-  /*
-  icon = {
-    icon: L.icon({
-      iconSize: [ 25, 41 ],
-      iconAnchor: [ 13, 0 ],
-      iconUrl: './node_modules/leaflet/dist/images/marker-icon.png',
-      shadowUrl: './node_modules/leaflet/dist/images/marker-shadow.png'
-    })
-  };
-  */
-  //stockConsult
- 
+
 	constructor() { 
   }
 
 	ngOnInit() {
-
     // Déclaration de la carte avec les coordonnées du centre et le niveau de zoom.
     this.myfrugalmap = L.map('frugalmap').setView([50.6311634, 3.0599573], 12);
     L.control.scale().addTo(this.myfrugalmap);
@@ -46,26 +35,18 @@ export class ConsultationCapteurComponent implements OnInit {
     }).addTo(this.myfrugalmap);
 
     //Methode de recherche de ville avec pointeur
-    var test : string = '333';
-     test += "78";
-    console.log("affiche : 111---> "+test);
     var searchControl = new ELG.Geosearch().addTo(this.myfrugalmap);
 
     var results = new L.LayerGroup().addTo(this.myfrugalmap);
-     console.log("affiche : 11133---> "+L.marker.length);
-      test +="b";
-      searchControl.on(results, function(data) {
-        
-        test +="a";
-        results.clearLayers();
-          for (var i = data.results.length - 1; i >= 0; i--) {
-            results.addLayer(L.marker(data.results[i].latlng));
-            test += data.results[i].latlng;
-          }
-        });
-      test += "78";
+
+     searchControl.on("results", function(data) {
+       console.log("ici");
+      results.clearLayers();
+        for (let i = data.results.length - 1; i >= 0; i--) {
+          results.addLayer(L.marker(data.results[i].latlng));
+        }
+      });
      
- 
       //Methode récupérer la position d'un capteur ave sa longitude et latitude
 
     for(var i = 0; i <= this.capteur.length; i++){
@@ -84,12 +65,14 @@ export class ConsultationCapteurComponent implements OnInit {
   flyto(){
     this.voir = true;
     for(var i = 0; i <= this.capteur.length; i++){
-    L.map(
+    L.map('frugalmap', {
+      center: [this.capteur[i].longitude, this.capteur[i].latitude],
+      zoom: 11
+      });
     }
-
   }
-  
-*/
+  */
+
   supprimer(nom) {
     console.log("le capteur à supprimer est : "+ nom);
     for(var i = 0; i <= this.capteur.length; i++){
@@ -100,7 +83,7 @@ export class ConsultationCapteurComponent implements OnInit {
       }
     }
   }
-// test
+
   modification(){
     this.modifier = true;
   }
