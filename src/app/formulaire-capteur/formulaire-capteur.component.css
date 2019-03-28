@@ -1,0 +1,12 @@
+label {
+  display: inline-table;
+  margin-left: 1em;
+
+}
+
+.image {
+  position: absolute;
+  right: 430px;
+  width: 150px;
+  height: 120px;
+}

@@ -1,0 +1,54 @@
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+  
+  <br>
+  <br>
+
+  <div style="text-align:center"> </div>
+ 
+    <!-- Déclaration du conteneur de la carte avec l'id "frugalmap" -->
+    <div id="frugalmap"> </div>
+
+    <br>
+
+    <div class="ajouter">
+      <a routerLink="/formulaire"> <button class="btn btn-success"> + </button> </a>
+    </div>
+
+    <br>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">Version</th>
+          <th scope="col">Longitude</th>
+          <th scope="col">Latitude</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+
+
+      <tr *ngFor="let cap of capteur">
+        <td><div *ngIf="!cap.modification">{{cap.nom}} </div><div *ngIf="cap.modification"><input [(ngModel)]="cap.nom" placeholder="nom" [disabled]="!cap.modification"> </div></td>
+        <td><div *ngIf="!cap.modification">{{cap.version}} </div><div *ngIf="cap.modification"> <input [(ngModel)]="cap.version" placeholder="version" [disabled]="!cap.modification"> </div></td>
+        <td><div *ngIf="!cap.modification">{{cap.longitude}} </div><div *ngIf="cap.modification"> <input [(ngModel)]="cap.longitude" placeholder="longitude" [disabled]="!cap.modification"> </div></td>
+        <td><div *ngIf="!cap.modification">{{cap.latitude}} </div><div *ngIf="cap.modification"> <input [(ngModel)]="cap.latitude" placeholder="latitude" [disabled]="!cap.modification"> </div></td>
+        <td> 
+          <button class='btn btn-danger' (click)="supprimer(cap.nom)">Supprimer </button>  
+          <button (click)="cap.modification=!cap.modification" *ngIf="!cap.modification" > Modifier 
+          </button>
+          
+          <button *ngIf="cap.modification" (click)="cap.modification=!cap.modification">enregistrer</button>
+        </td>
+      </tr>
+    
+  </table>
+
+  <br/>
+  <a routerLink="/acceuil"> <button>Retour</button> </a>

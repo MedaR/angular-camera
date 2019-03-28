@@ -1,0 +1,36 @@
+<br>
+<br>
+
+	<div class="image">
+		<a href="./assets">
+		<img src="/assets/favicon.ico" class="img-thumbnail" alt="Couleur">
+		</a>
+	</div> 
+
+<div class="rajouter"> 
+	<label>
+		<input type="text" [(ngModel)]="nv_capteur.nom" placeholder="nom :" />
+	</label>
+
+<br>
+<br>
+	<label>
+		<input type="number" [(ngModel)]="nv_capteur.version" placeholder="version :"/>
+	</label>
+<br>
+<br>
+
+	<label>
+		<input type="number" [(ngModel)]="nv_capteur.longitude" placeholder="longitude :"/>
+	</label>
+
+	<label>
+		<input type="number" [(ngModel)]="nv_capteur.latitude" placeholder="latitude :"/>
+	</label>
+	<br>
+	<br>
+  <a routerLink="/consultation"> <button (click)="ajouter()"> ajouter</button> </a>
+</div>
+<br/>
+
+<a routerLink="/acceuil"> <button>Retour</button> </a>
