@@ -35,7 +35,7 @@
 
 
       <tr *ngFor="let cap of capteur">
-        <td><div *ngIf="!cap.modification">{{cap.nom}} </div><div *ngIf="cap.modification"><input [(ngModel)]="cap.nom" placeholder="nom" [disabled]="!cap.modification"> </div></td>
+        <td><div *ngIf="!cap.modification">{{cap.nom}} </div><div *ngIf="cap.modification"><input [(ngModel)]="cap.nom" placeholder="nom" [disabled]="!cap.modification"> </div> </td>
         <td><div *ngIf="!cap.modification">{{cap.version}} </div><div *ngIf="cap.modification"> <input [(ngModel)]="cap.version" placeholder="version" [disabled]="!cap.modification"> </div></td>
         <td><div *ngIf="!cap.modification">{{cap.longitude}} </div><div *ngIf="cap.modification"> <input [(ngModel)]="cap.longitude" placeholder="longitude" [disabled]="!cap.modification"> </div></td>
         <td><div *ngIf="!cap.modification">{{cap.latitude}} </div><div *ngIf="cap.modification"> <input [(ngModel)]="cap.latitude" placeholder="latitude" [disabled]="!cap.modification"> </div></td>
