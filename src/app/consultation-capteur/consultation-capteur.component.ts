@@ -6,8 +6,7 @@ import { FormulaireCapteurComponent } from '/Users/relesse/Documents/angular-cam
 import * as L from 'leaflet';
 import * as ELG from 'esri-leaflet-geocoder';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-
-
+import { TextInputAutocompleteModule } from 'angular-text-input-autocomplete';
 
 @Component({
   selector: 'app-consultation-capteur',
@@ -61,17 +60,18 @@ export class ConsultationCapteurComponent implements OnInit {
     console.log("ajouter le marqueur pour capteur "+this.capteur[i].nom);
     }
   }
-  /*
-  flyto(){
+  
+  flyto(nom){
     this.voir = true;
-    for(var i = 0; i <= this.capteur.length; i++){
-    L.map('frugalmap', {
-      center: [this.capteur[i].longitude, this.capteur[i].latitude],
-      zoom: 11
-      });
+     console.log("The map nae is -> "+ L.map.name +  " ----> "+this.myfrugalmap.name);
+      for (var i = 0; i <= this.capteur.length; i++){
+        if (this.capteur[i].nom == nom){
+      this.myfrugalmap.setView([this.capteur[i].longitude, this.capteur[i].latitude], 12);
+      }
     }
+  
   }
-  */
+  
 
   supprimer(nom) {
     console.log("le capteur à supprimer est : "+ nom);
@@ -87,4 +87,6 @@ export class ConsultationCapteurComponent implements OnInit {
   modification(){
     this.modifier = true;
   }
+
+
 }

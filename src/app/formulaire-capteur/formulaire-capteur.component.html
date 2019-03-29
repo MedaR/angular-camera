@@ -5,6 +5,7 @@
     <!-- Déclaration du conteneur de la carte avec l'id "frugalmap" -->
     <div id="frugalmap"> </div>
 
+
     <br>
 
 	<div class="image">
@@ -27,12 +28,13 @@
 <br>
 
 	<label>
-		<input type="number" [(ngModel)]="nv_capteur.longitude" placeholder="longitude :"/>
+		<input type="number" [(ngModel)]="nv_capteur.latitude" placeholder="latitude :"/>
 	</label>
 
 	<label>
-		<input type="number" [(ngModel)]="nv_capteur.latitude" placeholder="latitude :"/>
+		<input type="number" [(ngModel)]="nv_capteur.longitude" placeholder="longitude :"/>
 	</label>
+
 	<br>
 	<br>
   <a routerLink="/consultation"> <button (click)="ajouter()"> ajouter</button> </a>

@@ -17,6 +17,10 @@ export class FormulaireCapteurComponent implements OnInit {
 	rajouter: boolean;
 	nv_capteur = new Capteur;
 	selecte: Capteur;
+  myfrugalmap: any;
+  searchControl: any;
+  results: any;
+  
   //stock: Array<Capteur> = [];
 
   constructor() { 
@@ -27,24 +31,34 @@ export class FormulaireCapteurComponent implements OnInit {
   ngOnInit() {
 
     // Déclaration de la carte avec les coordonnées du centre et le niveau de zoom.
-    var myfrugalmap = L.map('frugalmap').setView([50.6311634, 3.0599573], 12);
-    L.control.scale().addTo(myfrugalmap);
+    this.myfrugalmap = L.map('frugalmap').setView([50.6311634, 3.0599573], 12);
+    L.control.scale().addTo(this.myfrugalmap);
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: 'données © OpenStreetMap/ODbL - rendu OSM France',
-    }).addTo(myfrugalmap);
+    }).addTo(this.myfrugalmap);
 
-    var searchControl = new ELG.Geosearch().addTo(myfrugalmap);
+  }
 
-    var results = new L.LayerGroup().addTo(myfrugalmap);
-    
+  location() {
+
+    this.myfrugalmap = this.searchControl = new ELG.Geosearch().addTo(this.myfrugalmap);
+  }
+
+    //var results = new L.LayerGroup().addTo(this.myfrugalmap);
+    /*
     searchControl.on("results", function(data) {
       results.clearLayers();
       for (var i = data.results.length - 1; i >= 0; i--) {
-        results.addLayer(L.marker(data.results[i].latlng));
+        results.addLayer(L.marker(data.results[i].latlng)); 
+        var nv_cap = new Capteur; 
+        nv_cap.latitude = data.results[i].latlng.lat; 
+        nv_cap.longitude = data.results[i].latlng.lng;
+        console.log("latitude : "+data.results[i].latlng.lat)
       }
     });
-  }
+    */
+  
 
   ajouter() {
     this.capteur.push(this.nv_capteur);
@@ -52,4 +66,5 @@ export class FormulaireCapteurComponent implements OnInit {
   	this.rajouter = false;
     console.log("la taille du tableau est : "+this.capteur.length);
   }
+
 }
