@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ConsultationCapteurComponent } from './consultation-capteur/consultation-capteur.component';
 import { PageAcceuilComponent } from './page-acceuil/page-acceuil.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { TextInputAutocompleteModule } from 'angular-text-input-autocomplete';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    TextInputAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

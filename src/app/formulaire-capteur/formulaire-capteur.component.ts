@@ -18,9 +18,7 @@ export class FormulaireCapteurComponent implements OnInit {
 	nv_capteur = new Capteur;
 	selecte: Capteur;
   myfrugalmap: any;
-  searchControl: any;
-  results: any;
-  
+  latlng = L.latLng(this.nv_capteur.latitude, this.nv_capteur.longitude);
   //stock: Array<Capteur> = [];
 
   constructor() { 
@@ -38,27 +36,32 @@ export class FormulaireCapteurComponent implements OnInit {
     attribution: 'données © OpenStreetMap/ODbL - rendu OSM France',
     }).addTo(this.myfrugalmap);
 
-  }
-
-  location() {
-
-    this.myfrugalmap = this.searchControl = new ELG.Geosearch().addTo(this.myfrugalmap);
-  }
-
-    //var results = new L.LayerGroup().addTo(this.myfrugalmap);
+    var searchControl = new ELG.Geosearch().addTo(this.myfrugalmap);
     /*
-    searchControl.on("results", function(data) {
+    const myIcon = L.icon({
+    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png',
+    iconSize: [ 25, 41 ],
+    iconAnchor: [ 12, 41 ],
+    popupAnchor:[ 0, -41 ],
+    });   
+    var coor = searchControl.LatLng([this.nv_capteur.latitude, this.nv_capteur.longitude]); 
+    L.marker([this.nv_capteur.longitude, this.nv_capteur.latitude], {icon: myIcon}).bindPopup(this.nv_capteur.nom).addTo(this.myfrugalmap).openPopup();
+
+*/
+
+   // var results = new L.LayerGroup().addTo(this.myfrugalmap);
+/*
+      searchControl.on('results', function(data) {
+
       results.clearLayers();
-      for (var i = data.results.length - 1; i >= 0; i--) {
+        for (var i = data.results.length - 1; i >= 0; i--) {
         results.addLayer(L.marker(data.results[i].latlng)); 
         var nv_cap = new Capteur; 
-        nv_cap.latitude = data.results[i].latlng.lat; 
-        nv_cap.longitude = data.results[i].latlng.lng;
-        console.log("latitude : "+data.results[i].latlng.lat)
+        this.nv_capteur.latitude = data.results[i].latlng.lat; 
+        console.log("affiche : "+this.nv_capteur.latitude);
       }
     });
-    */
-  
+  */}
 
   ajouter() {
     this.capteur.push(this.nv_capteur);

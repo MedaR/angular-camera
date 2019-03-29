@@ -20,6 +20,8 @@ export class ConsultationCapteurComponent implements OnInit {
   information: Capteur;
   myfrugalmap: any;
   voir: boolean;
+  formControlValue = '';
+  resultat: any;
 
 	constructor() { 
   }
@@ -70,6 +72,18 @@ export class ConsultationCapteurComponent implements OnInit {
       }
     }
   
+  }
+
+  findChoices(searchText: string) {
+
+    const filterValue = searchText.toLowerCase();
+    for(var i = 0; i <= this.capteur.length; i++){
+      this.resultat = this.capteur[i].nom.filter(item => item.toLowerCase().includes(searchText.toLowerCase()));
+      }
+    } 
+
+  getChoiceLabel(choice: string) {
+    return choice;
   }
   
 
