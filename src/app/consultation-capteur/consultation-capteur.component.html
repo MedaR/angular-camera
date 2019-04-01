@@ -21,6 +21,21 @@
 
     <br>
 
+    
+    <mwl-text-input-autocomplete-container>
+      <textarea
+        placeholder="Type @ to search..."
+        class="form-control"
+        rows="5"
+        [(ngModel)]="formControlValue"
+        mwlTextInputAutocomplete
+        [findChoices]="findChoices"
+        [getChoiceLabel]="getChoiceLabel">
+      </textarea>
+    </mwl-text-input-autocomplete-container>
+    
+  <br>
+
     <div class="ajouter">
       <a routerLink="/formulaire"> <button class="btn btn-success"> + </button> </a>
     </div>

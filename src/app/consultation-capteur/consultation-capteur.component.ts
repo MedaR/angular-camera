@@ -17,7 +17,7 @@ export class ConsultationCapteurComponent implements OnInit {
 	suppr: Capteur;
 	capteur = StockCapteur;
   modifier: boolean;
-  information: Capteur;
+  information: string[];
   myfrugalmap: any;
   voir: boolean;
   formControlValue = '';
@@ -74,18 +74,18 @@ export class ConsultationCapteurComponent implements OnInit {
   
   }
 
-  findChoices(searchText: string) {
+  findChoices(searchText: string): string[] {
 
     const filterValue = searchText.toLowerCase();
     for(var i = 0; i <= this.capteur.length; i++){
-      this.resultat = this.capteur[i].nom.filter(item => item.toLowerCase().includes(searchText.toLowerCase()));
+      return [this.capteur[i].nom].filter(item => item.toLowerCase().includes(filterValue));
       }
     } 
 
   getChoiceLabel(choice: string) {
     return choice;
   }
-  
+ 
 
   supprimer(nom) {
     console.log("le capteur à supprimer est : "+ nom);
@@ -101,6 +101,5 @@ export class ConsultationCapteurComponent implements OnInit {
   modification(){
     this.modifier = true;
   }
-
 
 }

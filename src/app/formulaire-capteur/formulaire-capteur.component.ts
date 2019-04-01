@@ -18,7 +18,8 @@ export class FormulaireCapteurComponent implements OnInit {
 	nv_capteur = new Capteur;
 	selecte: Capteur;
   myfrugalmap: any;
-  latlng = L.latLng(this.nv_capteur.latitude, this.nv_capteur.longitude);
+  
+  //latlng = L.latLng(this.nv_capteur.latitude, this.nv_capteur.longitude);
   //stock: Array<Capteur> = [];
 
   constructor() { 
@@ -36,8 +37,35 @@ export class FormulaireCapteurComponent implements OnInit {
     attribution: 'données © OpenStreetMap/ODbL - rendu OSM France',
     }).addTo(this.myfrugalmap);
 
+  
     var searchControl = new ELG.Geosearch().addTo(this.myfrugalmap);
-    /*
+    
+    var results = new L.LayerGroup().addTo(this.myfrugalmap);
+
+      searchControl.on('results', function recuper (data) {
+      results.clearLayers();
+        for (var i = data.results.length - 1; i >= 0; i--) {
+          results.addLayer(L.marker(data.results[i].latlng)); 
+          var nv_cap = new Capteur; 
+          nv_cap.longitude = data.results[i].latlng.lat; 
+          nv_cap.latitude = data.results[i].latlng.lng;
+          console.log("latitude : "+nv_cap.latitude);
+          console.log("longitude: "+nv_cap.longitude);
+          
+          
+          var latitude= document.getElementById("latitude") as HTMLInputElement;
+           latitude.value=data.results[i].latlng.lat; 
+
+           var longitude= document.getElementById("longitude") as HTMLInputElement;
+           longitude.value=data.results[i].latlng.lng;
+          //this.nv_capteur.nom = data.results[i].latlng.lat; 
+          // lat = data.results[i].latlng.lat; 
+         // lon = data.results[i].latlng.lng;
+      }
+    });
+
+
+      /*
     const myIcon = L.icon({
     iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png',
     iconSize: [ 25, 41 ],
@@ -49,21 +77,13 @@ export class FormulaireCapteurComponent implements OnInit {
 
 */
 
-   // var results = new L.LayerGroup().addTo(this.myfrugalmap);
-/*
-      searchControl.on('results', function(data) {
-
-      results.clearLayers();
-        for (var i = data.results.length - 1; i >= 0; i--) {
-        results.addLayer(L.marker(data.results[i].latlng)); 
-        var nv_cap = new Capteur; 
-        this.nv_capteur.latitude = data.results[i].latlng.lat; 
-        console.log("affiche : "+this.nv_capteur.latitude);
-      }
-    });
-  */}
+  }
 
   ajouter() {
+    var latitude= document.getElementById("latitude") as HTMLInputElement;
+    this.nv_capteur.longitude = +latitude.value;
+    var longitude= document.getElementById("longitude") as HTMLInputElement;
+    this.nv_capteur.latitude = +longitude.value;
     this.capteur.push(this.nv_capteur);
     console.log(this.nv_capteur);
   	this.rajouter = false;
