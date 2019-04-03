@@ -8,6 +8,7 @@ import { ConsultationCapteurComponent } from './consultation-capteur/consultatio
 import { PageAcceuilComponent } from './page-acceuil/page-acceuil.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { TextInputAutocompleteModule } from 'angular-text-input-autocomplete';
+import { MatFileUploadModule } from 'angular-material-fileupload';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TextInputAutocompleteModule } from 'angular-text-input-autocomplete';
     FormsModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
-    TextInputAutocompleteModule
+    TextInputAutocompleteModule,
+    MatFileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]

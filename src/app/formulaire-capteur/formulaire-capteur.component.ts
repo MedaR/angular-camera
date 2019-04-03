@@ -4,7 +4,7 @@ import { StockCapteur } from '/Users/relesse/Documents/angular-camera/src/app/st
 import { Location } from '@angular/common';
 import * as L from 'leaflet';
 import * as ELG from 'esri-leaflet-geocoder';
-import { OpenStreetMapProvider } from 'leaflet-geosearch';
+//import { OpenStreetMapProvider } from 'leaflet-geosearch';
 
 @Component({
   selector: 'app-formulaire-capteur',
@@ -17,11 +17,10 @@ export class FormulaireCapteurComponent implements OnInit {
 	rajouter: boolean;
 	nv_capteur = new Capteur;
 	selecte: Capteur;
-  myfrugalmap: any;
-  
-  //latlng = L.latLng(this.nv_capteur.latitude, this.nv_capteur.longitude);
-  //stock: Array<Capteur> = [];
-
+  myfrugalmap: any
+  fileToUpload : File = null;
+  imageUrl : string 
+ 
   constructor() { 
 
     this.rajouter = true;
@@ -36,6 +35,13 @@ export class FormulaireCapteurComponent implements OnInit {
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: 'données © OpenStreetMap/ODbL - rendu OSM France',
     }).addTo(this.myfrugalmap);
+
+    const myIcon = L.icon({
+    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png',
+    iconSize: [ 25, 41 ],
+    iconAnchor: [ 12, 41 ],
+    popupAnchor:[ 0, -41 ],
+    }); 
 
   
     var searchControl = new ELG.Geosearch().addTo(this.myfrugalmap);
@@ -63,20 +69,6 @@ export class FormulaireCapteurComponent implements OnInit {
          // lon = data.results[i].latlng.lng;
       }
     });
-
-
-      /*
-    const myIcon = L.icon({
-    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png',
-    iconSize: [ 25, 41 ],
-    iconAnchor: [ 12, 41 ],
-    popupAnchor:[ 0, -41 ],
-    });   
-    var coor = searchControl.LatLng([this.nv_capteur.latitude, this.nv_capteur.longitude]); 
-    L.marker([this.nv_capteur.longitude, this.nv_capteur.latitude], {icon: myIcon}).bindPopup(this.nv_capteur.nom).addTo(this.myfrugalmap).openPopup();
-
-*/
-
   }
 
   ajouter() {
@@ -88,6 +80,15 @@ export class FormulaireCapteurComponent implements OnInit {
     console.log(this.nv_capteur);
   	this.rajouter = false;
     console.log("la taille du tableau est : "+this.capteur.length);
+  }
+
+  handleFileInput(file : FileList){
+    this.fileToUpload = file.item(0);
+    var reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.imageUrl = event.target.result;
+    }
+    reader.readAsDataURL(this.fileToUpload);
   }
 
 }

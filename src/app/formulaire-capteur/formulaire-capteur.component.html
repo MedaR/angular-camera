@@ -8,12 +8,28 @@
 
     <br>
 
+<div class="image">
+<label for="singleFile"> </label>
+<!--<input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/>-->
+<img [src]="imageUrl" style="width:110px; height:100px; margin-left:13%">
+<input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
+</div>
+<!--
+<mat-file-upload-queue #fileUploadQueue
+	[fileAlias]="'file'"
+    [httpUrl]="'http://localhost:8180/jax-rs-jersey-application-sample'">
+ 
+    <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+</mat-file-upload-queue>
+-->
+
+<!--
 	<div class="image">
 		<a href="./assets">
 		<img src="/assets/favicon.ico" class="img-thumbnail" alt="Couleur">
 		</a>
 	</div> 
-
+-->
 <div class="rajouter"> 
 	<label>
 		<input type="text" [(ngModel)]="nv_capteur.nom" placeholder="nom :" />

@@ -73,7 +73,7 @@ export class ConsultationCapteurComponent implements OnInit {
     }
   
   }
-
+/*
   findChoices(searchText: string): string[] {
 
     const filterValue = searchText.toLowerCase();
@@ -85,7 +85,7 @@ export class ConsultationCapteurComponent implements OnInit {
   getChoiceLabel(choice: string) {
     return choice;
   }
- 
+ */
 
   supprimer(nom) {
     console.log("le capteur à supprimer est : "+ nom);
