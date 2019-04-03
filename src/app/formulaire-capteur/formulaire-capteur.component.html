@@ -1,3 +1,4 @@
+
 <br>
 
 <div style="text-align:center"> </div>
@@ -9,11 +10,24 @@
     <br>
 
 <div class="image">
+   
+</div>
+
+
+
+
+
+
+<!-- fonctionne
+
 <label for="singleFile"> </label>
-<!--<input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/>-->
+<input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/
 <img [src]="imageUrl" style="width:110px; height:100px; margin-left:13%">
 <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
-</div>
+-->
+
+<!-- non fonctionnel -->
+
 <!--
 <mat-file-upload-queue #fileUploadQueue
 	[fileAlias]="'file'"
@@ -23,13 +37,7 @@
 </mat-file-upload-queue>
 -->
 
-<!--
-	<div class="image">
-		<a href="./assets">
-		<img src="/assets/favicon.ico" class="img-thumbnail" alt="Couleur">
-		</a>
-	</div> 
--->
+
 <div class="rajouter"> 
 	<label>
 		<input type="text" [(ngModel)]="nv_capteur.nom" placeholder="nom :" />
@@ -38,7 +46,7 @@
 <br>
 <br>
 	<label>
-		<input type="number" [(ngModel)]="nv_capteur.version" placeholder="version :"/>
+		<input type="text" [(ngModel)]="nv_capteur.version" placeholder="version :"/>
 	</label> 
 <br>
 <br>
@@ -53,8 +61,11 @@
 
 	<br>
 	<br>
-  <a routerLink="/consultation"> <button (click)="ajouter()"> ajouter</button> </a>
+
+  <a routerLink="/acceuil"> <button class="btn btn-info"><mat-icon>replay</mat-icon></button> </a>
+
+  <a routerLink="/consultation"> <button class="btn btn-success" (click)="ajouter()"><mat-icon>check</mat-icon> </button> </a>
+
 </div>
 <br/>
 
-<a routerLink="/acceuil"> <button>Retour</button> </a>

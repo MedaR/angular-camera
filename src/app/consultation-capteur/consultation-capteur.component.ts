@@ -5,8 +5,10 @@ import { Location } from '@angular/common';
 import { FormulaireCapteurComponent } from '/Users/relesse/Documents/angular-camera/src/app/formulaire-capteur/formulaire-capteur.component';
 import * as L from 'leaflet';
 import * as ELG from 'esri-leaflet-geocoder';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { TextInputAutocompleteModule } from 'angular-text-input-autocomplete';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-consultation-capteur',
@@ -28,28 +30,14 @@ export class ConsultationCapteurComponent implements OnInit {
 
 	ngOnInit() {
     // Déclaration de la carte avec les coordonnées du centre et le niveau de zoom.
-    this.myfrugalmap = L.map('frugalmap').setView([50.6311634, 3.0599573], 12);
+    this.myfrugalmap = L.map('frugalmap').setView([36.752500000000055, 3.041970000000049], 1);
     L.control.scale().addTo(this.myfrugalmap);
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: 'données © OpenStreetMap/ODbL - rendu OSM France',
     }).addTo(this.myfrugalmap);
 
-    //Methode de recherche de ville avec pointeur
-    var searchControl = new ELG.Geosearch().addTo(this.myfrugalmap);
-
-    var results = new L.LayerGroup().addTo(this.myfrugalmap);
-
-     searchControl.on("results", function(data) {
-       console.log("ici");
-      results.clearLayers();
-        for (let i = data.results.length - 1; i >= 0; i--) {
-          results.addLayer(L.marker(data.results[i].latlng));
-        }
-      });
-     
-      //Methode récupérer la position d'un capteur ave sa longitude et latitude
-
+    
     for(var i = 0; i <= this.capteur.length; i++){
     const myIcon = L.icon({
     iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png',
@@ -78,12 +66,15 @@ export class ConsultationCapteurComponent implements OnInit {
 
     const filterValue = searchText.toLowerCase();
     for(var i = 0; i <= this.capteur.length; i++){
+      if (searchText == this.capteur[i].nom){
       return [this.capteur[i].nom].filter(item => item.toLowerCase().includes(filterValue));
       }
-    } 
+    }   
+  } 
 
   getChoiceLabel(choice: string) {
     return choice;
+    console.log("affiche : "+choice);
   }
  */
 
@@ -100,6 +91,20 @@ export class ConsultationCapteurComponent implements OnInit {
 
   modification(){
     this.modifier = true;
+  }
+
+  filtre() {
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
 }

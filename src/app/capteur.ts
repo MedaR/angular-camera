@@ -1,7 +1,7 @@
 export class Capteur {
 
 	nom: string;
-	version: number;
+	version: string;
 	longitude: number;
 	latitude: number;
 }

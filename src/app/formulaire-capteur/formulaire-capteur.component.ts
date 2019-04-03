@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Capteur } from '/Users/relesse/Documents/angular-camera/src/app/capteur';
 import { StockCapteur } from '/Users/relesse/Documents/angular-camera/src/app/stock-capteur';
-import { Location } from '@angular/common';
 import * as L from 'leaflet';
 import * as ELG from 'esri-leaflet-geocoder';
 //import { OpenStreetMapProvider } from 'leaflet-geosearch';
@@ -19,7 +18,7 @@ export class FormulaireCapteurComponent implements OnInit {
 	selecte: Capteur;
   myfrugalmap: any
   fileToUpload : File = null;
-  imageUrl : string 
+  imageUrl : string;
  
   constructor() { 
 
@@ -29,7 +28,7 @@ export class FormulaireCapteurComponent implements OnInit {
   ngOnInit() {
 
     // Déclaration de la carte avec les coordonnées du centre et le niveau de zoom.
-    this.myfrugalmap = L.map('frugalmap').setView([50.6311634, 3.0599573], 12);
+    this.myfrugalmap = L.map('frugalmap').setView([36.752500000000055, 3.041970000000049], 2);
     L.control.scale().addTo(this.myfrugalmap);
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {

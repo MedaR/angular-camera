@@ -20,6 +20,19 @@
     <div id="frugalmap"> </div>
 
     <br>
+
+<!--
+    <mwl-text-input-autocomplete-container>
+      <textarea
+        placeholder="Type @ to search..."
+        class="form-control"
+        [(ngModel)]="formControlValue"
+        mwlTextInputAutocomplete
+        [findChoices]="findChoices"
+        [getChoiceLabel]="getChoiceLabel">
+      </textarea>
+    </mwl-text-input-autocomplete-container>
+-->
     <br>
 
     <div class="ajouter">
@@ -54,15 +67,15 @@
         <td><div *ngIf="!cap.modification">{{cap.longitude}} </div><div *ngIf="cap.modification"> <input [(ngModel)]="cap.longitude" placeholder="longitude" [disabled]="!cap.modification"> </div></td>
         <td><div *ngIf="!cap.modification">{{cap.latitude}} </div><div *ngIf="cap.modification"> <input [(ngModel)]="cap.latitude" placeholder="latitude" [disabled]="!cap.modification"> </div></td>
         <td> 
-          <button class='btn btn-danger' (click)="supprimer(cap.nom)"> Supprimer </button>  
-          <button (click)="cap.modification=!cap.modification" *ngIf="!cap.modification" > Modifier </button>
+          <button class='btn btn-danger' (click)="supprimer(cap.nom)"><mat-icon>delete</mat-icon>  </button>  
+          <button class='btn btn-primary'(click)="cap.modification=!cap.modification" *ngIf="!cap.modification" > <mat-icon>edit</mat-icon> </button>
   
           
-          <button *ngIf="cap.modification" (click)="cap.modification=!cap.modification">enregistrer</button>
+          <button class="btn btn-secondary" *ngIf="cap.modification" (click)="cap.modification=!cap.modification"><mat-icon>save</mat-icon></button>
         </td>
       </tr>
     
   </table>
 
   <br/>
-  <a routerLink="/acceuil"> <button>Retour</button> </a>
+  <a routerLink="/acceuil"> <button class="btn btn-info"><mat-icon>replay</mat-icon></button> </a>
