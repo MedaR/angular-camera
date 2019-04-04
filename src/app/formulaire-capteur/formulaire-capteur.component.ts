@@ -3,6 +3,7 @@ import { Capteur } from '/Users/relesse/Documents/angular-camera/src/app/capteur
 import { StockCapteur } from '/Users/relesse/Documents/angular-camera/src/app/stock-capteur';
 import * as L from 'leaflet';
 import * as ELG from 'esri-leaflet-geocoder';
+import { MatFileUploadModule } from 'angular-material-fileupload';
 //import { OpenStreetMapProvider } from 'leaflet-geosearch';
 
 @Component({
@@ -19,10 +20,11 @@ export class FormulaireCapteurComponent implements OnInit {
   myfrugalmap: any
   fileToUpload : File = null;
   imageUrl : string;
- 
+
   constructor() { 
 
     this.rajouter = true;
+  
   }
 
   ngOnInit() {

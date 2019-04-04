@@ -10,7 +10,7 @@ import { TextInputAutocompleteModule } from 'angular-text-input-autocomplete';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-
+import { MatFileUploadModule } from 'angular-material-fileupload';
 
 @NgModule({
   declarations: [
@@ -29,6 +29,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatIconModule,
     MatButtonModule,
     MatAutocompleteModule,
+    MatFileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]

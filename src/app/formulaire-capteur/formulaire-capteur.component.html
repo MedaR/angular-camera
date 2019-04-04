@@ -62,10 +62,19 @@
 	<br>
 	<br>
 
-  <a routerLink="/acceuil"> <button class="btn btn-info"><mat-icon>replay</mat-icon></button> </a>
-
+  <a routerLink="/accueil"> <button class="btn btn-info"><mat-icon>replay</mat-icon></button> </a>
   <a routerLink="/consultation"> <button class="btn btn-success" (click)="ajouter()"><mat-icon>check</mat-icon> </button> </a>
 
 </div>
 <br/>
 
+<label for="singleFile">Upload file</label>
+<input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/>
+<br>
+ 
+<mat-file-upload-queue #fileUploadQueue
+    [fileAlias]="'file'"
+    [httpUrl]="'http://localhost:8180/jax-rs-jersey-application-sample'">
+ 
+    <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+</mat-file-upload-queue>
