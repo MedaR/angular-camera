@@ -11,6 +11,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFileUploadModule } from 'angular-material-fileupload';
+import { ImageUpload } from 'vue-image-upload-resize';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import { MatFileUploadModule } from 'angular-material-fileupload';
     MatIconModule,
     MatButtonModule,
     MatAutocompleteModule,
-    MatFileUploadModule
+    MatFileUploadModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

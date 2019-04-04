@@ -38,6 +38,7 @@
     "popper.js": "^1.14.7",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
+    "vue-image-crop-upload": "^2.5.0",
     "vue-image-upload-resize": "^2.0.4",
     "zone.js": "~0.8.26"
   },
