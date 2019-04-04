@@ -4,7 +4,7 @@ import { StockCapteur } from '../stock-capteur';
 import * as L from 'leaflet';
 import * as ELG from 'esri-leaflet-geocoder';
 import { MatFileUploadModule } from 'angular-material-fileupload';
-import { ImageUpload } from 'vue-image-upload-resize';
+
 //import { OpenStreetMapProvider } from 'leaflet-geosearch';
 
 @Component({
