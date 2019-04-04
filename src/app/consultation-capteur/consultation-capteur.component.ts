@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Capteur } from '/Users/relesse/Documents/angular-camera/src/app/capteur';
-import { StockCapteur } from '/Users/relesse/Documents/angular-camera/src/app/stock-capteur';
+import { Capteur } from '../capteur';
+import { StockCapteur } from '../stock-capteur';
 import { Location } from '@angular/common';
-import { FormulaireCapteurComponent } from '/Users/relesse/Documents/angular-camera/src/app/formulaire-capteur/formulaire-capteur.component';
+import { FormulaireCapteurComponent } from '../formulaire-capteur/formulaire-capteur.component';
 import * as L from 'leaflet';
 import * as ELG from 'esri-leaflet-geocoder';
 import { TextInputAutocompleteModule } from 'angular-text-input-autocomplete';

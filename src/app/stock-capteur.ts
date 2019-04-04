@@ -1,4 +1,4 @@
-import { Capteur } from '/Users/relesse/Documents/angular-camera/src/app/capteur';
+import { Capteur } from './capteur';
 
 export  const StockCapteur: Array<Capteur> = [
 {nom: 'paris', version: "V1", longitude: 48.852969, latitude: 2.349903},
