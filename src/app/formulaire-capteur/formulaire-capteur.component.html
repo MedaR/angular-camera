@@ -10,6 +10,9 @@
     <br>
 
 <div class="image">
+
+	<img [src]="imageUrl" style="width:110px; height:110px; margin-left:13%">
+	<input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
    
 </div>
 
@@ -69,6 +72,16 @@
 <br/>
 
 <label for="singleFile">Upload file</label>
-<input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/>
+<input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue">
+
 <br>
  
+<mat-file-upload-queue #fileUploadQueue
+    [fileAlias]="'file'"
+    [httpUrl]="'http://localhost:4200/'">
+ 
+    <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+</mat-file-upload-queue>
+
+<br>
+

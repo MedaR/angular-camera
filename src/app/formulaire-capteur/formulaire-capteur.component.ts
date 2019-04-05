@@ -13,14 +13,15 @@ import { MatFileUploadModule } from 'angular-material-fileupload';
   styleUrls: ['./formulaire-capteur.component.css']
 })
 export class FormulaireCapteurComponent implements OnInit {
-	
+  
   capteur = StockCapteur;
-	rajouter: boolean;
-	nv_capteur = new Capteur;
-	selecte: Capteur;
+  rajouter: boolean;
+  nv_capteur = new Capteur;
+  selecte: Capteur;
   myfrugalmap: any
   fileToUpload : File = null;
-  imageUrl : string;
+  imageUrl : "";
+
 
   constructor() { 
 
@@ -80,7 +81,7 @@ export class FormulaireCapteurComponent implements OnInit {
     this.nv_capteur.latitude = +longitude.value;
     this.capteur.push(this.nv_capteur);
     console.log(this.nv_capteur);
-  	this.rajouter = false;
+    this.rajouter = false;
     console.log("la taille du tableau est : "+this.capteur.length);
   }
 

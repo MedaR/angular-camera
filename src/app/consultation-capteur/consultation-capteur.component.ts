@@ -24,6 +24,7 @@ export class ConsultationCapteurComponent implements OnInit {
   voir: boolean;
   formControlValue = '';
   resultat: any;
+  selected = "";
 
 	constructor() { 
   }

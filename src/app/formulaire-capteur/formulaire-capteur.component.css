@@ -6,17 +6,17 @@ label {
 
 .image {
   position: absolute;
-  right: 350px;
+  right: 300px;
   width: 50px;
   height: 150px;
-  top: 367px
+  top: 385px
 }
 
 #frugalmap {
     height: 300px;
     width: 70%;
     margin-left:15%; 
-  	margin-right:15%;
+    margin-right:15%;
 }
 
 a {
