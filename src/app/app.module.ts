@@ -12,7 +12,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFileUploadModule } from 'angular-material-fileupload';
 import { ImageUpload } from 'vue-image-upload-resize';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material';
+import { HttpClientModule }    from '@angular/common/http';
+import {CapteurService} from './capteur.service'; 
 
 @NgModule({
   declarations: [
@@ -32,6 +35,8 @@ import { ImageUpload } from 'vue-image-upload-resize';
     MatButtonModule,
     MatAutocompleteModule,
     MatFileUploadModule,
+    MatFormFieldModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

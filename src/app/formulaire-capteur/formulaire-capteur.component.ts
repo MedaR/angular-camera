@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Capteur } from '../capteur';
-import { StockCapteur } from '../stock-capteur';
+//import { StockCapteur } from '../stock-capteur';
 import * as L from 'leaflet';
 import * as ELG from 'esri-leaflet-geocoder';
 import { MatFileUploadModule } from 'angular-material-fileupload';
+import {CapteurService} from '../capteur.service'
 
 //import { OpenStreetMapProvider } from 'leaflet-geosearch';
 
@@ -14,22 +15,26 @@ import { MatFileUploadModule } from 'angular-material-fileupload';
 })
 export class FormulaireCapteurComponent implements OnInit {
   
-  capteur = StockCapteur;
+  //capteur = StockCapteur;
   rajouter: boolean;
   nv_capteur = new Capteur;
   selecte: Capteur;
   myfrugalmap: any
   fileToUpload : File = null;
   imageUrl : "";
+  test: Capteur[]
 
 
-  constructor() { 
+  constructor(private capteurService: CapteurService) { 
 
     this.rajouter = true;
   
   }
 
   ngOnInit() {
+
+    this.getCapteur();
+
 
     // Déclaration de la carte avec les coordonnées du centre et le niveau de zoom.
     this.myfrugalmap = L.map('frugalmap').setView([36.752500000000055, 3.041970000000049], 2);
@@ -79,10 +84,10 @@ export class FormulaireCapteurComponent implements OnInit {
     this.nv_capteur.longitude = +latitude.value;
     var longitude= document.getElementById("longitude") as HTMLInputElement;
     this.nv_capteur.latitude = +longitude.value;
-    this.capteur.push(this.nv_capteur);
+    this.test.push(this.nv_capteur);
     console.log(this.nv_capteur);
     this.rajouter = false;
-    console.log("la taille du tableau est : "+this.capteur.length);
+    console.log("la taille du tableau est : "+this.test.length);
   }
 
   handleFileInput(file : FileList){
@@ -92,6 +97,11 @@ export class FormulaireCapteurComponent implements OnInit {
       this.imageUrl = event.target.result;
     }
     reader.readAsDataURL(this.fileToUpload);
+  }
+
+  getCapteur(): void {
+    this.capteurService.getCapteur()
+        .subscribe(test => this.test = test);
   }
 
 }

@@ -20,23 +20,10 @@
     <div id="frugalmap"> </div>
 
     <br>
-
-<!--
-    <mwl-text-input-autocomplete-container>
-      <textarea
-        placeholder="Type @ to search..."
-        class="form-control"
-        [(ngModel)]="formControlValue"
-        mwlTextInputAutocomplete
-        [findChoices]="findChoices"
-        [getChoiceLabel]="getChoiceLabel">
-      </textarea>
-    </mwl-text-input-autocomplete-container>
--->
     <br>
 
     <div class="ajouter">
-      <a routerLink="/formulaire"> <button class="btn btn-success"> + </button> </a>
+   <!-- <a routerLink="/formulaire"> <button class="btn btn-success"> + </button> </a> -->
     </div>
 
     <br>
@@ -53,7 +40,7 @@
       </thead>
 
 
-      <tr *ngFor="let cap of capteur">
+      <tr *ngFor= "let cap of test">
         <td>
           <div *ngIf="!cap.modification">{{cap.nom}} </div>
           <div *ngIf="cap.modification">
@@ -77,5 +64,4 @@
     
   </table>
 
-  <br/>
   <a routerLink="/accueil"> <button class="btn btn-info"><mat-icon>replay</mat-icon></button> </a>
