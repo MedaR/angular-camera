@@ -44,8 +44,7 @@ export class ConsultationCapteurComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getCapteur();
-
+     this.getCapteur();
     
     // Déclaration de la carte avec les coordonnées du centre et le niveau de zoom.
     this.myfrugalmap = L.map('frugalmap').setView([36.752500000000055, 3.041970000000049], 1);
@@ -66,6 +65,7 @@ export class ConsultationCapteurComponent implements OnInit {
     L.marker([this.test[i].longitude, this.test[i].latitude], {icon: myIcon}).bindPopup(this.test[i].nom).addTo(this.myfrugalmap).openPopup();
 
     console.log("ajouter le marqueur pour capteur "+this.test[i].nom);
+
     }
     
   }
@@ -112,18 +112,8 @@ export class ConsultationCapteurComponent implements OnInit {
 
   getCapteur() {
     this.capteurService.getCapteur()
-        .subscribe
-        (data => { 
-          this.test = data;   
-          //var tab = [];
-          //tab = this.test.values;
-          console.log("+++++++++++");
-          console.log("->" +this.test);
-         // this.test2 = data as string [];   // FILL THE ARRAY WITH DATA.
-         //console.log(this.test2[1]);
-
-        });
-
+    .subscribe(data => this.test = data);
+        
   }
 
 }

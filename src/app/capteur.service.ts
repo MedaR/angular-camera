@@ -11,18 +11,14 @@ import { catchError, tap, map } from 'rxjs/operators';
 export class CapteurService {
 
 	private capteurUrl = 'http://localhost:8080/private/api/sensors';
-  info: Capteur[];
 	
   constructor(private http: HttpClient) { }
 
   getCapteur(): Observable<Capteur[]>{
-     console.log(this.http.get<Capteur[]>(this.capteurUrl));
-  	return this.http.get<Capteur[]>(this.capteurUrl);
-    
-             
+     //console.log(this.http.get<Capteur[]>(this.capteurUrl));
+  	 return of (StockCapteur);       
     } 
-
-
+/*
   getCapteurs(): Observable<Capteur[]>{
     // this.messageService.add('SensorService : fetching sensors');
     // return of(SENSORS);
@@ -50,8 +46,27 @@ export class CapteurService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
-  }	
-  	
+  }
+
+
+  sensors: Capteur[];
+  fetchSensors(): Observable<Capteur[]>{
+	// this.messageService.add('SensorService : fetching sensors');
+	// return of(SENSORS);
+	return this.http.get<Capteur[]>(this.capteurUrl)
+	.pipe(
+		tap(_ => this.log('fetched sensors')),
+			catchError(this.handleError('getSensors',[]))
+	)
 }
 
-
+  getFetchedSensors():Capteur[]{
+	this.fetchSensors()
+	.subscribe(sensors => this.sensors = sensors)
+		console.log("^^^^^^");
+		console.log("aa :" +this.sensors);
+		return this.sensors	
+	
+	}
+*/
+}
